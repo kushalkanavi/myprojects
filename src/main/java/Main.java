@@ -1,25 +1,31 @@
+import java.io.FileNotFoundException;
+
 /**
  * Created by kushalkanavi on 5/19/17.
  */
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
         HashTable ht = new HashTable(10);
 
-        ht.insert(11111,"Apple");
-        ht.insert(3,"Ball");
-        ht.insert(45,"Cat");
-        ht.insert(65,"Dog");
-        ht.insert(25,"Elephant");
-        ht.insert(97,"Fish");
-        ht.insert(10,"Goat");
+
+        ht.insert("Apple");
+        ht.insert("Ball");
+        ht.insert("Cat");
+        ht.insert("Dog");
+        ht.insert("Elephant");
+        ht.insert("Fish");
+        ht.insert("Goat");
+        ht.insert("GoatA");
+        ht.insert("GoatB");
+        ht.insert("GoatAA");
 
         ht.printHashTable();
 
-        ht.remove(65);
+        ht.remove("work");
 
         ht.printHashTable();
 
-        System.out.println(ht.get(45));
+        //System.out.println(ht.get(45));
     }
 }

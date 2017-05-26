@@ -14,33 +14,32 @@ public class HashTable {
             table[i] = null;
     }
 
-    public void insert(int key, String value) {
-        int hash = (myhash(key) % TABLE_SIZE);
+    public void insert(String value) {
+        int hash = (myhash(value.hashCode()) % TABLE_SIZE);
 
         if (table[hash] == null)
-            table[hash] = new LinkedHashEntry(key, value);
+            table[hash] = new LinkedHashEntry(value);
         else
         {
             LinkedHashEntry entry = table[hash];
-            while (entry.next != null && !(entry.key == key))
+            while (entry.next != null && !(entry.value.equals(value)))
                 entry = entry.next;
-            if (entry.key == (key))
+            if (entry.value.equals(value))
                 entry.value = value;
             else
-                entry.next = new LinkedHashEntry(key, value);
+                entry.next = new LinkedHashEntry(value);
         }
         size++;
     }
 
-    public String get(int key)
-    {
-        int hash = (myhash( key ) % TABLE_SIZE);
+    public String get(String value) {
+        int hash = (myhash( value.hashCode() ) % TABLE_SIZE);
         if (table[hash] == null)
             return null;
         else
         {
             LinkedHashEntry entry = table[hash];
-            while (entry != null && !(entry.key == key))
+            while (entry != null && !(entry.value.equals(value)))
                 entry = entry.next;
             if (entry == null)
                 return null;
@@ -49,19 +48,18 @@ public class HashTable {
         }
     }
 
-    public void remove(int key)
-    {
-        int hash = (myhash( key ) % TABLE_SIZE);
+    public void remove(String value) {
+        int hash = (myhash( value.hashCode() ) % TABLE_SIZE);
         if (table[hash] != null)
         {
             LinkedHashEntry prevEntry = null;
             LinkedHashEntry entry = table[hash];
-            while (entry.next != null && !(entry.key == key))
+            while (entry.next != null && !(entry.value.equals(value)))
             {
                 prevEntry = entry;
                 entry = entry.next;
             }
-            if (entry.key == key)
+            if (entry.value.equals(value))
             {
                 if (prevEntry == null)
                     table[hash] = entry.next;
