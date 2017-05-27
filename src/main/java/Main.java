@@ -1,3 +1,4 @@
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileNotFoundException;
 
 /**
@@ -5,6 +6,8 @@ import java.io.FileNotFoundException;
  */
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, ParserConfigurationException {
+        XMLFile xf = new XMLFile();
+        xf.getClass();
     }
 }
