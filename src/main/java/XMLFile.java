@@ -18,6 +18,7 @@ public class XMLFile {
             Document doc = dBuilder.parse("/Users/kushalkanavi/Documents/Study Material/JAVA Programs/myprojects/src/main/resources/project.xml");
             doc.getDocumentElement().normalize();
             NodeList items = doc.getElementsByTagName("item");
+
             for(int i = 0; i < items.getLength(); ++i) {
                 Node node = items.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -26,10 +27,10 @@ public class XMLFile {
                     String description = element.getElementsByTagName("description").item(0).getTextContent().trim();
                     String category = element.getElementsByTagName("category").item(0).getTextContent().trim();
                     String pubDate = element.getElementsByTagName("pubDate").item(0).getTextContent().trim();
-                   /* System.out.println(
+                    System.out.println(
                             "Title : " + title + " Description : " + description + " Category : " + category +
                                     " Publish Date" + pubDate
-                    );*/
+                    );
                 }
             }
         } catch (SAXException e) {
