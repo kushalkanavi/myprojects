@@ -1,30 +1,25 @@
 /**
  * Created by kushalkanavi on 5/30/17.
  */
-public class ExerciseThread extends Thread{
+public class ExerciseThread extends Thread {
 
+    private final int start;
+    private final int end;
 
-    public void run()  {
-        for (int i=0;i<10;++i){
-            System.out.println(Thread.currentThread().getName()+" - (A)Iteration Value: "+i);
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    public ExerciseThread(int start, int end) {
+        this.start = start;
+        this.end = end;
     }
-}
 
-class ExerciseThread1 extends Thread{
     public void run()  {
-        for (int i=0;i<5;++i){
-            System.out.println(Thread.currentThread().getName()+" - (B)Iteration Value: "+i);
+        for (int i = start; i < end; ++i){
+            System.out.println(Thread.currentThread().getName() + " - (A)Iteration Value: "+i);
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        throw new IllegalArgumentException("foo");
     }
 }
