@@ -1,21 +1,27 @@
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 /**
  * Created by kushalkanavi on 5/19/17.
  */
-public class Main {
-    public static void main(String[] args) throws FileNotFoundException, ParserConfigurationException {
 
-        XMLFile xf = new XMLFile();
-        xf.getClass();
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+
+        for (int x = 0; x < 5; x++) {
+            ExerciseThread temp = new ExerciseThread();
+            ExerciseThread1 temp1 =new ExerciseThread1();
+            temp.start();
+            temp1.start();
+            try {
+                temp.join(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                temp1.join(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println();
+        }
     }
 }
