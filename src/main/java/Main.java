@@ -48,12 +48,12 @@ public class Main {
             t.start();
         }
 
-        //System.out.println();
+        System.out.println();
 
-        /*for (int x = 0; x < (nothread*cothread); x += cothread) {
+        for (int x = 0; x < (nothread*cothread); x += cothread) {
             ExerciseThread thread = new ExerciseThread(x, x + cothread);
             executor.execute(new Thread(thread));
         }
-        executor.shutdown();*/
+        executor.shutdown();
     }
 }
