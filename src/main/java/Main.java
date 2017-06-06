@@ -1,59 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 /**
  * Created by kushalkanavi on 5/19/17.
  */
 
-// Runnable and ExecutorService
+
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        List<ExerciseThread> threads = new ArrayList<ExerciseThread>();
+    public static void main(String[] args) throws IOException, InterruptedException {
 
+        WebCrawler test = new WebCrawler("https://www.yahoo.com");
+        Thread t = new Thread(test);
+        t.start();
+        t.join();
 
-        Scanner numberofthread = new Scanner(System.in);
-        System.out.println("Enter number of threads to be created");
-        int nothread = numberofthread.nextInt();
+        /*Document document = Jsoup.connect("https://www.yahoo.com").get();
+        Elements linksOnPage = document.select("a[href]");
 
-        ExecutorService executor = Executors.newFixedThreadPool(nothread);
-
-        Scanner countofthread = new Scanner(System.in);
-        System.out.println("Enter number of times thread should count");
-        int cothread = countofthread.nextInt();
-
-        System.out.println();
-
-        // No of threads, How much should thread count
-        for (int x = 0; x < (nothread*cothread); x += cothread) {
-            ExerciseThread thread = new ExerciseThread(x, x + cothread);
-            thread.start();
-            threads.add(thread);
-        }
-        for(ExerciseThread thread : threads) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        System.out.println();
-
-        for (int x = 0; x < (nothread*cothread); x += cothread) {
-            ThreadRunnable thread = new ThreadRunnable(x, x + cothread);
-            Thread t = new Thread(thread);
-            t.start();
-        }
-
-        System.out.println();
-
-        for (int x = 0; x < (nothread*cothread); x += cothread) {
-            ExerciseThread thread = new ExerciseThread(x, x + cothread);
-            executor.execute(new Thread(thread));
-        }
-        executor.shutdown();
+        for (int i=0;i<10;++i){
+            Element link = linksOnPage.get(i);
+            System.out.println(link.attr("abs:href"));
+        }*/
     }
 }
