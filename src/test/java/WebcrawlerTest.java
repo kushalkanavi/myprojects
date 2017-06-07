@@ -8,8 +8,6 @@ import java.io.IOException;
 public class WebcrawlerTest{
     @Test
     public void Testwc() throws IOException {
-        WebCrawler test = new WebCrawler("https://www.yahoo.com");
-        Thread t = new Thread(test);
-        t.start();
+        //WebCrawler test = new WebCrawler("https://www.yahoo.com");
     }
 }
