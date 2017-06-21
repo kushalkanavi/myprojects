@@ -9,7 +9,7 @@ public class Main {
 
         WebCrawler test = new WebCrawler("https://www.yahoo.com");
         Thread t = new Thread(test);
-            t.start();
-            //t.join();
+        t.start();
+        t.join();
     }
 }
